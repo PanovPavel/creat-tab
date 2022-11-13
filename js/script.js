@@ -1,15 +1,42 @@
-let array = [0, 1, 2, 3, 4, 5, 6, 8, 9, 15, 16, 18,22];
-let middle = Math.ceil(array.length / 2);
-function findNumber(x){
-    middle = Math.ceil(middle);
-    if(x === array[middle]){
-        console.log(middle);
-    }else if(x > array[middle]){
-        middle = middle*1.5;
-        findNumber(x);
-    }else if(x < array[middle]){
-        middle = middle*0.75;
-        findNumber(x);
-    }
+const blockWhithItems = document.querySelector(".tabheader__items");
+//Элементы меню
+const tabItem = document.querySelectorAll(".tabheader__item");
+
+//Функция возвращает номер активного элемента
+let indexActiveItem = function numberActiveItem() {
+    let indexActive = -1;
+    tabItem.forEach((item, num) => {
+        if (item.classList.contains("tabheader__item_active")){
+            indexActive = num;
+            return num;
+        }
+    })
+    return indexActive;
 }
-findNumber(2);
+
+//Изменить контент
+function changeContent() {
+    const tabСontent = document.querySelectorAll(".tabcontent");
+    tabСontent.forEach((item, num) => {
+        console.log(indexActiveItem());
+        if (num == indexActiveItem()) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    })
+}
+changeContent();
+
+//Изменяет состояние класса item на active
+blockWhithItems.addEventListener("click", (event)=>{
+    if(event.target && event.target.classList.contains("tabheader__item")){
+        console.log("click");
+        tabItem.forEach((item)=>{
+           item.classList.remove("tabheader__item_active", "fade", "show");
+        });
+        event.target.classList.add("tabheader__item_active", "fade", "show");
+        changeContent();
+    }
+})
+
