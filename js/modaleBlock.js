@@ -18,7 +18,6 @@ function closeModal(){
 btnOpenModal.forEach((item)=>{
     item.addEventListener("click", (event)=>{
         openModal();
-
     })
 })
 
@@ -43,15 +42,12 @@ document.addEventListener("keyup", (event)=>{
 
 //Появления modal через 5 секунд
 let watchModalSecond = setTimeout(openModal, 5000);
-// console.log(document.documentElement.scrollHeight);
-// console.log(document.documentElement.scrollTop);
 
-
-
-window.addEventListener("scroll", function showModal(event){
-    if(((document.documentElement.scrollHeight - document.documentElement.clientHeight) - document.documentElement.scrollTop) < 5){
-        openModal();
+window.addEventListener("scroll", function showModal(){
+    if (((document.documentElement.scrollHeight - document.documentElement.clientHeight) - document.documentElement.scrollTop) == 0) {
         //Удалить обработчик после исполнения
         window.removeEventListener("scroll", showModal);
+        openModal();
+
     }
-})
+});
