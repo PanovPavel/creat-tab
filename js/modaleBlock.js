@@ -16,13 +16,13 @@ function closeModal(){
 }
 
 btnOpenModal.forEach((item)=>{
-    item.addEventListener("click", (event)=>{
+    item.addEventListener("click", ()=>{
         openModal();
     })
 })
 
 btnCloseModal.forEach((item)=>{
-    item.addEventListener("click", (event)=>{
+    item.addEventListener("click", ()=>{
         closeModal();
     })
 })
@@ -35,7 +35,7 @@ modaleBlock.addEventListener("click", (event)=>{
 })
 //Закрытие блока с клавиатуры
 document.addEventListener("keyup", (event)=>{
-    if(event.code == "Escape"){
+    if(event.code === "Escape"){
         closeModal();
     }
 })
@@ -44,7 +44,7 @@ document.addEventListener("keyup", (event)=>{
 let watchModalSecond = setTimeout(openModal, 5000);
 
 window.addEventListener("scroll", function showModal(){
-    if (((document.documentElement.scrollHeight - document.documentElement.clientHeight) - document.documentElement.scrollTop) == 0) {
+    if (((document.documentElement.scrollHeight - document.documentElement.clientHeight) - document.documentElement.scrollTop) === 0) {
         //Удалить обработчик после исполнения
         window.removeEventListener("scroll", showModal);
         openModal();

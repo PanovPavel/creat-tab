@@ -9,7 +9,7 @@ class Menu{
         this.redner();
     }
     changeToPrice(){
-        this.price = Math.floor(this.price / 60);
+        this.price = Math.floor(this.price / this.tranfer);
     }
     redner(){
         const container = document.querySelector("[data-containerMenu]");
@@ -27,7 +27,7 @@ class Menu{
         container.append(menu);
     }
 }
-let menu = new Menu(
+new Menu(
     `img/tabs/vegy.jpg`,
     `Меню "Фитнес"`,
     `Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруков`,

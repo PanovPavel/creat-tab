@@ -3,7 +3,7 @@ const hours = document.querySelector("#hours");
 const minutes = document.querySelector("#minutes");
 const seconds = document.querySelector("#seconds");
 
-let nowDate = new Date();
+// let nowDate = new Date();
 
 timerStart();
 function timerStart(){
