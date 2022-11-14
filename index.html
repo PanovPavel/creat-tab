@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script defer src="js/timerScript.js"></script>
     <script defer src="js/script.js"></script>
+    <script defer src="js/modaleBlock.js"></script>
 </head>
 <body>
     <header class="header">
@@ -20,7 +21,7 @@
             </nav>
         </div>
         <div class="header__right-block">
-            <button class="btn btn_white">Связаться с нами</button>
+            <button data-openModal class="btn btn_white">Связаться с нами</button>
         </div>
     </header>
     <div class="sidepanel">
@@ -88,7 +89,7 @@
                 </div>
             </div>
             <div class="offer__action">
-                <button class="btn btn_dark">Связаться с нами</button>
+                <button data-openModal class="btn btn_dark">Связаться с нами</button>
             </div>
         </div>
         <div class="container">
@@ -287,13 +288,13 @@
                 <a href="#" class="link">+380500941356</a>
             </div>
         </div>
-    </footer>
+    </footer>btn btn_dark
 
     <div class="modal">
         <div class="modal__dialog">
             <div class="modal__content">
                 <form action="#">
-                    <div class="modal__close">&times;</div>
+                    <div data-closeModal class="modal__close">&times;</div>
                     <div class="modal__title">Мы свяжемся с вами как можно быстрее!</div>
                     <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
                     <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="modal__input">
