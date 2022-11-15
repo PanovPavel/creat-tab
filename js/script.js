@@ -1,3 +1,4 @@
+"use strict";
 const blockWhithItems = document.querySelector(".tabheader__items");
 //Элементы меню
 const tabItem = document.querySelectorAll(".tabheader__item");

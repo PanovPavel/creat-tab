@@ -1,3 +1,4 @@
+"use strict";
 class Menu{
     constructor(imgSrc, title, description, price) {
         this.imgSrc = imgSrc;

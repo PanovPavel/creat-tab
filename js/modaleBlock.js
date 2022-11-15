@@ -1,3 +1,4 @@
+"use strict";
 {
     const modaleBlock = document.querySelector(".modal");
     const btnOpenModal = document.querySelectorAll("[data-openModal]");

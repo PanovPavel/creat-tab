@@ -1,4 +1,6 @@
+"use strict";
 {
+    let a = 3;
     const forms = document.querySelectorAll("form");
     const messageForUser = document.createElement("div");
     messageForUser.classList.add("status");
