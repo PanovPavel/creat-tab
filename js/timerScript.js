@@ -16,7 +16,7 @@ function timerStart(){
         seconds.textContent = (59 - nowDate.getSeconds()).toString();
         minutes.textContent = (59 - nowDate.getMinutes()).toString();
         hours.textContent = (23 - nowDate.getHours()).toString();
-        days.textContent = (20 - nowDate.getDate()).toString();
+        days.textContent = (60 - nowDate.getDate()).toString();//Осталось дней. 60 - сегодняя дата
         if(days.textContent < 0){
             clearTimeout(changeDate);
             seconds.textContent = `0`;
