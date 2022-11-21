@@ -8,14 +8,17 @@ const sliderImg = document.querySelectorAll(".offer__slide"),
       sliderWrapper = document.querySelector(".offer__slider-wrapper");
 
 let currentSlide = 1;
+if(localStorage.getItem(`currentSlide`) != null){
+    currentSlide = localStorage.getItem(`currentSlide`);
+}
 
 currentNumber.textContent = "0" + currentSlide;
 totalNumber.textContent = "0" + sliderImg.length;
-
+sliderWrapper.style.overflow = `hidden`;
 sliderInto.style.display = `flex`;
 sliderInto.style.width = `${sliderImg.length * 650}px`
+sliderInto.style.transform = `translateX(-${650*(currentSlide-1)}px)`;
 sliderInto.style.transition = `0.5s all`;
-sliderWrapper.style.overflow = `hidden`;
 dotsArray = creatDonts();
 
 //событие нажатия на кнопку next
@@ -81,22 +84,26 @@ function showNextSlide(){
     if(currentSlide < sliderImg.length) {
         ++currentSlide;
         changeStyleTransformAndTextContent();
-        changeOpacityDot(dotsArray)
+        changeOpacityDot(dotsArray);
+         localStorage.setItem(`currentSlide`, `${currentSlide}`);
     }else{
         currentSlide = 1;
         changeStyleTransformAndTextContent();
-        changeOpacityDot(dotsArray)
+        changeOpacityDot(dotsArray);
+        localStorage.setItem(`currentSlide`, `${currentSlide}`);
     }
 }
 function showLastSlide(){
     if(currentSlide > 1){
         --currentSlide;
         changeStyleTransformAndTextContent();
-        changeOpacityDot(dotsArray)
+        changeOpacityDot(dotsArray);
+        localStorage.setItem(`currentSlide`, `${currentSlide}`);
     }else {
         currentSlide = sliderImg.length;
         changeStyleTransformAndTextContent();
         changeOpacityDot(dotsArray);
+        localStorage.setItem(`currentSlide`, `${currentSlide}`);
     }
 }
 
