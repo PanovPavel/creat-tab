@@ -1,12 +1,14 @@
 const sliderImg = document.querySelectorAll(".offer__slide"),
+      sliderBox = document.querySelector(`.offer__slider`),
       currentNumber = document.querySelector("#current"),
       totalNumber = document.querySelector("#total"),
       lastSliderButton = document.querySelector(".offer__slider-prev"),
       nextButton = document.querySelector(".offer__slider-next"),
       sliderInto = document.querySelector(".offer__slider_into"),
-    sliderWrapper = document.querySelector(".offer__slider-wrapper");
+      sliderWrapper = document.querySelector(".offer__slider-wrapper");
 
 let currentSlide = 1;
+
 currentNumber.textContent = "0" + currentSlide;
 totalNumber.textContent = "0" + sliderImg.length;
 
@@ -14,49 +16,92 @@ sliderInto.style.display = `flex`;
 sliderInto.style.width = `${sliderImg.length * 650}px`
 sliderInto.style.transition = `0.5s all`;
 sliderWrapper.style.overflow = `hidden`;
+dotsArray = creatDonts();
 
+//событие нажатия на кнопку next
 nextButton.addEventListener(`click`, ()=>{
-    nextSlide();
+    showNextSlide();
 })
-
+//событие нажатия на кнопку last
+lastSliderButton.addEventListener("click", ()=>{
+    showLastSlide();
+})
+//событие свайпа по слайдеру
 new Hammer(sliderInto)
     .on(`swipe`, (event)=>{
         if(event.deltaX > 5){
-           lastSlide();
+           showLastSlide();
         }else if(event.deltaX < -5){
-            nextSlide();
+            showNextSlide();
         }
         console.log(event.deltaX);
     });
-lastSliderButton.addEventListener("click", ()=>{
-    lastSlide();
+//событие нажатия на точки
+dotsArray.forEach(dot=>{
+    dot.addEventListener(`click`, (event)=>{
+        currentSlide = event.target.getAttribute(`data-slide-to`);
+        changeStyleTransformAndTextContent();
+        console.log(dotsArray);
+        changeOpacityDot(dotsArray);
+    })
 })
 
-// changeSlide();
-// function changeSlide() {
-//
-// }
-function nextSlide(){
+function creatDonts(){
+    //Блок хранения точек
+    sliderBox.style.position = `relative`;
+    const dots = document.createElement("ol");
+    dots.classList.add(`carousel-indicators`);
+    sliderBox.append(dots);
+
+    //массив точек
+    const dotsArray = [];
+
+    for(let i = 0; i < sliderImg.length;i++){
+        const dot = document.createElement('li');
+        dot.setAttribute(`data-slide-to`, i + 1);
+        dot.classList.add("dot");
+        if(i + 1 == currentSlide){
+            dot.style.opacity = `1`;
+        }
+        //добавление точек в массив, и блок dots
+        dots.append(dot);
+        //Возвращает массив элементов, точек
+        dotsArray.push(dot);
+    }
+    return dotsArray;
+}
+//Изменить стили всех точек в массиве
+function changeOpacityDot(arrayDots){
+    arrayDots.forEach(item=>{
+        item.style.opacity = `.5`;
+    })
+    arrayDots[currentSlide - 1].style.opacity = `1`;
+}
+function showNextSlide(){
     if(currentSlide < sliderImg.length) {
         ++currentSlide;
-        currentNumber.textContent = "0" + currentSlide;
-        sliderInto.style.transform = `translateX(-${650*(currentSlide-1)}px)`;
-        console.log(sliderInto.style.transform + `значение: ${currentSlide}`)
+        changeStyleTransformAndTextContent();
+        changeOpacityDot(dotsArray)
     }else{
         currentSlide = 1;
-        currentNumber.textContent = "0" + currentSlide;
-        sliderInto.style.transform = `translateX(-${650*(currentSlide-1)}px)`;
+        changeStyleTransformAndTextContent();
+        changeOpacityDot(dotsArray)
     }
 }
-function lastSlide(){
+function showLastSlide(){
     if(currentSlide > 1){
         --currentSlide;
-        currentNumber.textContent = "0" + currentSlide;
-        sliderInto.style.transform = `translateX(-${650*(currentSlide-1)}px)`;
-        console.log(sliderInto.style.transform + `значение: ${currentSlide}`)
+        changeStyleTransformAndTextContent();
+        changeOpacityDot(dotsArray)
     }else {
-        currentSlide = 4;
-        currentNumber.textContent = "0" + currentSlide;
-        sliderInto.style.transform = `translateX(-${650*(currentSlide-1)}px)`;
+        currentSlide = sliderImg.length;
+        changeStyleTransformAndTextContent();
+        changeOpacityDot(dotsArray);
     }
+}
+
+function changeStyleTransformAndTextContent(){
+    currentNumber.textContent = "0" + currentSlide;
+    sliderInto.style.transform = `translateX(-${650*(currentSlide-1)}px)`;
+    console.log(sliderInto.style.transform + `значение: ${currentSlide}`)
 }
