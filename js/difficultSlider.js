@@ -9,7 +9,7 @@ const sliderImg = document.querySelectorAll(".offer__slide"),
 
 let currentSlide = 1;
 if(localStorage.getItem(`currentSlide`) != null){
-    currentSlide = localStorage.getItem(`currentSlide`);
+    currentSlide = +localStorage.getItem(`currentSlide`);
 }
 
 currentNumber.textContent = "0" + currentSlide;

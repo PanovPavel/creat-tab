@@ -17,10 +17,10 @@ let indexActiveItem = function numberActiveItem() {
 
 //Изменить контент
 function changeContent() {
-    const tabСontent = document.querySelectorAll(".tabcontent");
-    tabСontent.forEach((item, num) => {
+    const tabContent = document.querySelectorAll(".tabcontent");
+    tabContent.forEach((item, num) => {
         console.log(indexActiveItem());
-        if (num == indexActiveItem()) {
+        if (num === indexActiveItem()) {
             item.style.display = "block";
         } else {
             item.style.display = "none";

@@ -1,9 +1,9 @@
 "use strict";
 {
-    const modaleBlock = document.querySelector(".modal");
-    const btnOpenModal = document.querySelectorAll("[data-openModal]");
-    const btnCloseModal = document.querySelectorAll("[data-closeModal]");
-    const forms = document.querySelectorAll("form");
+    const modaleBlock = document.querySelector<HTMLElement>(".modal");
+    const btnOpenModal = document.querySelectorAll<HTMLElement>("[data-openModal]");
+    const btnCloseModal = document.querySelectorAll<HTMLElement>("[data-closeModal]");
+    const forms = document.querySelectorAll<HTMLFormElement>("form");
 
     function openModal() {
         modaleBlock.style.display = "block";
