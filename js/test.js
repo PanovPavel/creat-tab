@@ -1,4 +1,6 @@
-let str = `Моё имя R2D2`;
 
-const reg = /\w\d\w\d/i;
-console.log(str.match(reg));
+export let one = 1;
+export let two = 2;
+export default function sayHi() {
+    console.log(`Hi`);
+}

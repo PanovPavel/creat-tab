@@ -1,4 +1,4 @@
-{
+function calculatorCalorie(){
     const result = document.querySelector(`.calculating__result span`);
     let sex, height, weight, age, ratio;
 
@@ -64,3 +64,4 @@ calcTotal();
     getDynamicIforamtion(`#weight`);
     getDynamicIforamtion(`#age`);
 }
+module.exports = calculatorCalorie;

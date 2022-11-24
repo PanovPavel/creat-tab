@@ -1,5 +1,5 @@
-"use strict";
-{
+function modaleBlock(){
+    console.log("dddddddddddddddddddddddd")
     const modaleBlock = document.querySelector(".modal");
     const btnOpenModal = document.querySelectorAll("[data-openModal]");
     const btnCloseModal = document.querySelectorAll("[data-closeModal]");
@@ -58,3 +58,4 @@
         }
     });
 }
+module.exports = modaleBlock;

@@ -1,5 +1,5 @@
 "use strict";
-{
+function sendDataForm(){
     const forms = document.querySelectorAll("form");
     const messageForUser = document.createElement("div");
     messageForUser.classList.add("status");
@@ -34,3 +34,4 @@
         postData(item);
     })
 }
+module.exports = sendDataForm;
