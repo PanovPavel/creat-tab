@@ -1,9 +1,8 @@
 function calculatorCalorie(){
     const result = document.querySelector(`.calculating__result span`);
     let sex, height, weight, age, ratio;
-
+    console.log(`/////////////////`);
     function calcTotal(){
-        console.log("******************************************************")
         console.log(sex + " sex");
         console.log(height + " height");
         console.log(weight + " weight");
@@ -64,4 +63,4 @@ calcTotal();
     getDynamicIforamtion(`#weight`);
     getDynamicIforamtion(`#age`);
 }
-module.exports = calculatorCalorie;
+export default calculatorCalorie;

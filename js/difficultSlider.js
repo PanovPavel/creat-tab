@@ -1,3 +1,4 @@
+import 'hammerjs';
 function difficultSlider(){
     console.log("dddddddddddddddddddddddd")
     const sliderImg = document.querySelectorAll(".offer__slide"),
@@ -21,7 +22,7 @@ function difficultSlider(){
     sliderInto.style.width = `${sliderImg.length * 650}px`
     sliderInto.style.transform = `translateX(-${650 * (currentSlide - 1)}px)`;
     sliderInto.style.transition = `0.5s all`;
-    dotsArray = creatDonts();
+    let dotsArray = creatDonts();
 
 //событие нажатия на кнопку next
     nextButton.addEventListener(`click`, () => {
@@ -63,7 +64,7 @@ function difficultSlider(){
 
         for (let i = 0; i < sliderImg.length; i++) {
             const dot = document.createElement('li');
-            dot.setAttribute(`data-slide-to`, i + 1);
+            dot.setAttribute(`data-slide-to`, `${i + 1}`);
             dot.classList.add("dot");
             if (i + 1 == currentSlide) {
                 dot.style.opacity = `1`;
@@ -118,4 +119,4 @@ function difficultSlider(){
         console.log(sliderInto.style.transform + `значение: ${currentSlide}`)
     }
 }
-module.exports = difficultSlider;
+export default difficultSlider;

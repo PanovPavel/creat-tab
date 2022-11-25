@@ -13,7 +13,25 @@ module.exports = {
 
     devtool: "source-map", //сохранять исходники
 
-    module: {} //модули доп. насттроек
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/, //файлы JS (регулярное выражение)
+                exclude: /node_modules/, //не преобразовывать мудли npx
+                use: {
+                    loader: 'babel-loader', //использовать bable
+                    options: {
+                        presets: [ //настройки пресета
+                            ['@babel/preset-env', { //какой пресет настроек использовать (их несколько)
+                                debug:true,
+                                corejs: 3, // библиотека полифилов
+                                useBuiltIns: 'usage'}]
+                        ]
+                    }
+                }
+            }
+        ]
+    }
 };
 // module.exports = {
 //     mode: 'development', //режим оптимизации, разработка, продакшен

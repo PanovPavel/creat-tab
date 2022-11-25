@@ -1,4 +1,4 @@
-export function timerScript() {
+ function timerScript() {
     const days = document.querySelector("#days");
     const hours = document.querySelector("#hours");
     const minutes = document.querySelector("#minutes");
@@ -31,3 +31,4 @@ export function timerScript() {
         }, 1);
     }
 }
+export default timerScript;

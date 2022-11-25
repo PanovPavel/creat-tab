@@ -60,4 +60,4 @@ function generationMenu() {
         }
     }
 }
-module.exports = generationMenu;
+export default generationMenu;

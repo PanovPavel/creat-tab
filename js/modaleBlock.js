@@ -58,4 +58,4 @@ function modaleBlock(){
         }
     });
 }
-module.exports = modaleBlock;
+export default modaleBlock;

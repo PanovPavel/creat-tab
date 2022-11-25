@@ -34,4 +34,4 @@ function sendDataForm(){
         postData(item);
     })
 }
-module.exports = sendDataForm;
+export default sendDataForm;
